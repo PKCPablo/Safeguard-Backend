@@ -1,10 +1,11 @@
 package com.safeguard.safeguardbackend;
 
-import com.safeguard.safeguardbackend.controller.ProductController;
+import com.safeguard.safeguardbackend.rest.impl.ProductControllerImpl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.HandlerAdapter;
@@ -12,8 +13,8 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-@SpringBootApplication
-@Import({ ProductController.class })
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@Import({ProductControllerImpl.class})
 public class SafeguardbackendApplication {
 
 	// silence console logging

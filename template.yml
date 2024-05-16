@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Example Pet Store API written with SpringBoot with the aws-serverless-java-container library
+Description: Safeguard Backend API
 
 Globals:
   Api:
@@ -14,8 +14,10 @@ Resources:
       Handler: com.safeguard.safeguardbackend.StreamLambdaHandler::handleRequest
       Runtime: java21
       CodeUri: .
-      MemorySize: 1512
-      Policies: AWSLambdaBasicExecutionRole
+      MemorySize: 2048
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonDynamoDBFullAccess
       Timeout: 60
       Events:
         HttpApiEvent:
@@ -27,6 +29,6 @@ Resources:
 Outputs:
   SpringBootPetStoreApi:
     Description: URL for application
-    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/'
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/product'
     Export:
-      Name: SpringBootSafeguardBackendApi
+      Name: SpringBootPetStoreApi

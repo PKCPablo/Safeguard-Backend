@@ -1,43 +1,26 @@
 package com.safeguard.safeguardbackend.model;
 
-import java.util.Date;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@DynamoDBTable(tableName = "producto")
 public class Product {
-    private String id;
-    private String breed;
-    private String name;
-    private Date dateOfBirth;
 
-    public String getId() {
-        return id;
-    }
+    @DynamoDBHashKey
+    private Integer id;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    @DynamoDBAttribute
+    private String nombre;
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    @DynamoDBAttribute
+    private String precio;
 }
