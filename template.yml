@@ -4,10 +4,23 @@ Description: Safeguard Backend API
 
 Globals:
   Api:
-    # API Gateway regional endpoints
     EndpointConfiguration: REGIONAL
+    Cors:
+      AllowMethods: "'DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
 
 Resources:
+  SafeguardBackendApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Auth:
+        DefaultAuthorizer: MyCognitoAuth
+        Authorizers:
+          MyCognitoAuth:
+            Type: COGNITO_USER_POOLS
+            UserPoolArn: "arn:aws:cognito-idp:eu-central-1:654654632475:userpool/eu-central-1_ADvCUGsDv"
   SafeguardBackend:
     Type: AWS::Serverless::Function
     Properties:
@@ -20,15 +33,11 @@ Resources:
         - AmazonDynamoDBFullAccess
       Timeout: 60
       Events:
-        HttpApiEvent:
-          Type: HttpApi
+        RestApiEvent:
+          Type: Api
           Properties:
-            TimeoutInMillis: 20000
-            PayloadFormatVersion: '1.0'
-
-Outputs:
-  SpringBootPetStoreApi:
-    Description: URL for application
-    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/product'
-    Export:
-      Name: SpringBootPetStoreApi
+            Path: /{proxy+}
+            Method: ANY
+            RestApiId: !Ref SafeguardBackendApi
+            Auth:
+              Authorizer: MyCognitoAuth
