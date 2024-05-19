@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -30,7 +31,7 @@ public class PaymentServiceImpl implements PaymentService {
     public void createPayment(CreatePaymentDTO dto) {
         Payment payment = new Payment();
 
-        payment.setId(dto.getId());
+        payment.setId(UUID.randomUUID().toString());
         payment.setAccountFromId(dto.getAccountFromId());
         payment.setAccountToId(dto.getAccountToId());
         payment.setAmount(dto.getAmount());

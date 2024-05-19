@@ -10,8 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateAccountRequest {
-    private String id;
-
     private String userId;
 
     private Double balance;

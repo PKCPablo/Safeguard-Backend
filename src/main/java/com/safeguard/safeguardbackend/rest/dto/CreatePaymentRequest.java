@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreatePaymentRequest {
-    private String id;
-
     private String accountFromId;
 
     private String accountToId;

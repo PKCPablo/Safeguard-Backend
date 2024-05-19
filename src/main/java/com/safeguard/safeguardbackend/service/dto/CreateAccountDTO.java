@@ -11,8 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateAccountDTO {
-    private String id;
-
     private String userId;
 
     private Double balance;
@@ -20,7 +18,6 @@ public class CreateAccountDTO {
     private List<String> payments;
 
     public CreateAccountDTO(CreateAccountRequest request) {
-        setId(request.getId());
         setUserId(request.getUserId());
         setBalance(request.getBalance());
         setPayments(request.getPaymentsIds());

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -30,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
     public void createAccount(CreateAccountDTO dto) {
         var account = new Account();
 
-        account.setId(dto.getId());
+        account.setId(UUID.randomUUID().toString());
         account.setUserId(dto.getUserId());
         account.setBalance(dto.getBalance());
 
