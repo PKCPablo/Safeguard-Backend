@@ -18,8 +18,8 @@ public class ProductControllerImpl implements ProductController {
     ProductService productService;
 
     @Override
-    public ResponseEntity<Integer> createProduct(Product newProduct) {
-        var response = productService.createProduct(newProduct);
+    public ResponseEntity<Integer> createProduct(Product product) {
+        var response = productService.createProduct(product);
 
         return ResponseEntity.ok(response);
     }
@@ -43,12 +43,5 @@ public class ProductControllerImpl implements ProductController {
         productService.deleteProduct(productId);
 
         return ResponseEntity.noContent().build();
-    }
-
-    @Override
-    public ResponseEntity<Void> updateProduct(Integer productId, Product product) {
-        productService.updateProduct(productId, product);
-
-        return ResponseEntity.ok().build();
     }
 }

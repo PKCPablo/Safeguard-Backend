@@ -1,5 +1,8 @@
 package com.safeguard.safeguardbackend;
 
+import com.safeguard.safeguardbackend.rest.impl.AccountControllerImpl;
+import com.safeguard.safeguardbackend.rest.impl.PaymentControllerImpl;
+import com.safeguard.safeguardbackend.rest.impl.PaymentHistoryControllerImpl;
 import com.safeguard.safeguardbackend.rest.impl.ProductControllerImpl;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +19,12 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@Import({ProductControllerImpl.class})
+@Import({
+		ProductControllerImpl.class,
+		AccountControllerImpl.class,
+		PaymentControllerImpl.class,
+		PaymentHistoryControllerImpl.class
+})
 public class SafeguardbackendApplication {
 
 	// silence console logging

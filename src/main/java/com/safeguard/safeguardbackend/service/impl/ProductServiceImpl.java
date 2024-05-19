@@ -33,14 +33,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Integer createProduct(Product newProduct) {
-        dynamoDBMapper.save(newProduct);
-        return newProduct.getId();
-    }
-
-    @Override
-    public Void updateProduct(Integer productId, Product product) {
+    public Integer createProduct(Product product) {
         dynamoDBMapper.save(product);
-        return null;
+        return product.getId();
     }
 }

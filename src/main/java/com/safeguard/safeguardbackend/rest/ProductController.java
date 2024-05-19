@@ -16,7 +16,7 @@ import java.util.List;
 public interface ProductController {
 
     @RequestMapping(path = "/product", method = RequestMethod.POST)
-    ResponseEntity<Integer> createProduct(@RequestBody Product newProduct);
+    ResponseEntity<Integer> createProduct(@RequestBody Product product);
 
     @RequestMapping(path = "/product/{id}", method = RequestMethod.GET)
     ResponseEntity<Product> retrieveProduct(@PathVariable("id") Integer productId);
@@ -26,7 +26,4 @@ public interface ProductController {
 
     @RequestMapping(path = "/product/{id}", method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteProduct(@PathVariable("id") Integer productId);
-
-    @RequestMapping(path = "/product/{id}", method = RequestMethod.POST)
-    ResponseEntity<Void> updateProduct(@PathVariable("id") Integer productId, @RequestBody Product product);
 }

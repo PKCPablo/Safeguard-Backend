@@ -9,7 +9,6 @@ import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRep
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-@EnableDynamoDBRepositories(basePackages = {"com.safeguard.safeguardbackend.repository"})
 public class DynamoDBConfiguration {
 
     @Bean

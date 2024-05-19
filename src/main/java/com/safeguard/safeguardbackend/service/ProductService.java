@@ -17,8 +17,5 @@ public interface ProductService {
     Void deleteProduct(Integer productId);
 
     @Transactional(readOnly = false)
-    Integer createProduct(Product newProduct);
-
-    @Transactional(readOnly = false)
-    Void updateProduct(Integer productId, Product product);
+    Integer createProduct(Product product);
 }
