@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,9 +17,12 @@ public class CreateAccountDTO {
 
     private Double balance;
 
+    private List<String> payments;
+
     public CreateAccountDTO(CreateAccountRequest request) {
         setId(request.getId());
         setUserId(request.getUserId());
         setBalance(request.getBalance());
+        setPayments(request.getPaymentsIds());
     }
 }

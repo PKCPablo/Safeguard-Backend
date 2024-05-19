@@ -2,8 +2,6 @@ package com.safeguard.safeguardbackend;
 
 import com.safeguard.safeguardbackend.rest.impl.AccountControllerImpl;
 import com.safeguard.safeguardbackend.rest.impl.PaymentControllerImpl;
-import com.safeguard.safeguardbackend.rest.impl.PaymentHistoryControllerImpl;
-import com.safeguard.safeguardbackend.rest.impl.ProductControllerImpl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -13,17 +11,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.HandlerMapping;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @Import({
-		ProductControllerImpl.class,
 		AccountControllerImpl.class,
 		PaymentControllerImpl.class,
-		PaymentHistoryControllerImpl.class
 })
 public class SafeguardbackendApplication {
 
