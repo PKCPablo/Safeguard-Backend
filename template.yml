@@ -20,7 +20,7 @@ Resources:
         Authorizers:
           MyCognitoAuth:
             Type: COGNITO_USER_POOLS
-            UserPoolArn: "arn:aws:cognito-idp:eu-central-1:654654632475:userpool/eu-central-1_ADvCUGsDv"
+            UserPoolArn: "CognitoUserPoolARN"
   SafeguardBackend:
     Type: AWS::Serverless::Function
     Properties:
